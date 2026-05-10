@@ -1,0 +1,35 @@
+{
+  "todos": [
+    {
+      "id": "1",
+      "title": "Complete React assignment",
+      "completed": false
+    },
+    {
+      "id": "2",
+      "title": "Study Redux Toolkit",
+      "completed": true
+    },
+    {
+      "id": "3",
+      "title": "Build Todo App UI",
+      "completed": false
+    },
+    {
+      "id": "4",
+      "title": "Practice Git commands",
+      "completed": true
+    },
+    {
+      "id": "5",
+      "title": "Deploy project to GitHub",
+      "completed": false
+    },
+    {
+      "id": "5e06MJz-jDI",
+      "title": "Call the supervisor",
+      "completed": false
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}
