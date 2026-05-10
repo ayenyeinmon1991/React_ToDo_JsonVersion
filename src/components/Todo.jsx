@@ -1,13 +1,34 @@
 import React from 'react'
-
-export default function Todo({todo, handleDel}) {
+import { useState } from 'react';
+export default function Todo({todo, handleDel, handleUpdate}) {
+    let [isEditing, setIsEditing] = React.useState(false);
+    let [editedTitle, setEditedTitle] = useState(todo.title);
+    let handleEditSubmit=(e)=>{
+        e.preventDefault();
+        const updatedTodo = {
+            ...todo,
+            title: editedTitle
+        }
+        handleUpdate(updatedTodo);
+        setIsEditing(false);
+        
+    }
   return (
     <div>
         <li className="todo-item-container" >
                         <div className="todo-item">
                             <input type="checkbox" />
-                            <span className="todo-item-label">{todo.title}</span>
-                            {/* <input type="text" className="todo-item-input" value={todo.title} /> */}
+                            {!isEditing && <span onDoubleClick={()=> setIsEditing(true)} className="todo-item-label">{todo.title}</span>}
+                            {isEditing && (
+                                <form onSubmit={handleEditSubmit}>
+                                    <input 
+                                        className="todo-item-input" 
+                                        value={editedTitle} 
+                                        onChange={e=> setEditedTitle(e.target.value)}
+                                        autoFocus
+                                    />
+                                </form>
+                            )}
                         </div>
                         <button className="x-button" onClick={() => handleDel(todo.id)}>
                             <svg
